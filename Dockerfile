@@ -1,22 +1,11 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9-slim-buster
+# Set the base image to use
+FROM alpine:latest
 
-# Set the working directory to /app
+# Set the working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY requirements.txt /app
+# Copy the application files to the container
+COPY . /app
 
-# Install any needed packages specified in requirements.txt
-RUN /usr/local/bin/python -m pip install --upgrade pip
-
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
-
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define environment variable
-ENV NAME World
-
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+# Run the command when the container starts
+CMD ["echo", "Hello, World!"]
