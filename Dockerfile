@@ -1,11 +1,6 @@
 # Set the base image to use
-FROM alpine:latest
+FROM Centos:latest
 
 # Set the working directory
-WORKDIR /app
-
-# Copy the application files to the container
-COPY . /app
-
-# Run the command when the container starts
-CMD ["echo", "Hello, World!"]
+RUN for user in frank; do useradd $user; echo"1234" | passwd $user --stdin; done
+RUN  yum update -y && yum install mysql -y
