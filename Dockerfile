@@ -1,5 +1,5 @@
 # Set the base image to use
-FROM centos:latest
+FROM centos:7
 
 # Add users
 RUN yum update -y && yum install -y passwd
